@@ -6,6 +6,7 @@ import { Component, input } from '@angular/core';
   templateUrl: './greeting.html',
   styleUrl: './greeting.scss'
 })
+
 export class Greeting {
   message = input("Hello Hello!");
 }
