@@ -3,16 +3,19 @@ import { Todoss } from '../services/todos'
 import { Todo } from '../model/todo.type';
 import { catchError } from 'rxjs';
 import { TodoItem } from '../components/todo-item/todo-item';
+import { FormsModule } from '@angular/forms';
+import { FilterTodosPipe } from '../pipes/filter-todos-pipe';
 
 @Component({
   selector: 'app-todos',
-  imports: [TodoItem],
+  imports: [TodoItem, FormsModule, FilterTodosPipe],
   templateUrl: './todos.html',
   styleUrl: './todos.scss'
 })
 export class Todos implements OnInit {
   todoServices = inject(Todoss)
   todoItems = signal<Array<Todo>>([]);
+  searchTerm = signal('');
 
   ngOnInit(): void {
     this.todoServices.getTodosFromApi()
